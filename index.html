@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SelfMOTR: Revisiting MOTR with Self-Generating Detection Priors</title>
+    <meta name="description" content="Project page for SelfMOTR: Revisiting MOTR with Self-Generating Detection Priors." />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Noto+Sans:400,500,700|Castoro:400,400i"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Noto Sans", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial"],
+              display: ["Google Sans", "Noto Sans", "ui-sans-serif", "system-ui"],
+              serif: ["Castoro", "ui-serif", "Georgia"]
+            },
+            boxShadow: { soft: "0 10px 30px rgba(0,0,0,0.08)" }
+          }
+        }
+      };
+    </script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 font-sans">
+    <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/80 backdrop-blur">
+      <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+        <a href="#top" class="font-display font-semibold tracking-tight">SelfMOTR</a>
+        <nav class="hidden sm:flex gap-5 text-sm text-slate-700">
+          <a class="hover:text-slate-900" href="#abstract">Abstract</a>
+          <a class="hover:text-slate-900" href="#results">Results</a>
+          <a class="hover:text-slate-900" href="#videos">Videos</a>
+          <a class="hover:text-slate-900" href="#citation">Citation</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="mx-auto max-w-5xl px-4 py-10 pb-16">
+      <section class="rounded-2xl border border-slate-200 bg-white shadow-soft">
+      <div class="p-6 sm:p-8 space-y-6 sm:space-y-8">
+        <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-center leading-tight">
+          SelfMOTR: Revisiting MOTR with Self-Generating Detection Priors
+        </h1>
+        <div class="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-center text-lg font-medium text-slate-900">
+            <a href="#" class="hover:text-blue-600 transition-colors">Fabian Gülhan <sup>1</sup></a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Emil Mededovic<sup>1</sup></a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Yuli Wu<sup>1,2</sup></a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Johannes Stegmaier<sup>1,2</sup></a>
+          </div>
+
+          <div class="mt-2 flex flex-wrap justify-center gap-x-6 gap-y-1 text-center text-sm text-slate-600">
+            <span><sup>1</sup> Chair of Imaging and Computer Vision, RWTH Aachen University, Aachen, Germany </span>
+            <span><sup>2</sup> Heinrich Heine University Düsseldorf, Faculty of Mathematics and Natural Sciences, Machine Learning for Medical Data, Düsseldorf, Germany</span>
+          </div>
+
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a
+                  href="https://arxiv.org/abs/2511.20279"
+                  class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            <i class="fas fa-file-pdf"></i> Paper
+          </a>
+          <a
+                  href="#"
+                  class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            <i class="fab fa-github"></i> Code (Coming Soon)
+          </a>
+          <div class="p-6 sm:p-8 space-y-6 sm:space-y-8">
+            <div class="flex justify-center">
+              <img
+                      src="assets/selfmotr.png"
+                      alt="SelfMOTR architecture overview"
+                      class="w-[320px] sm:w-[520px] md:w-[640px] h-auto max-h-40 sm:max-h-52 md:max-h-80 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+          </section>
+        <section id="abstract" class="mt-10">
+        <h2 class="font-display text-2xl font-semibold tracking-tight border-b border-slate-200 pb-2">Abstract</h2>
+        <div class="mt-5 rounded-2xl border border-slate-200 bg-white shadow-soft p-6 sm:p-8">
+          <div class="space-y-4 text-slate-800 leading-relaxed">
+            <p> End-to-end transformer architectures have driven significant progress in multi-object tracking by unifying detection and association into a single, heuristic-free framework. Despite these benefits, poor detection performance and the inherent conflict between detection and association in a joint architecture remain critical concerns. Recent approaches aim to mitigate these issues by employing advanced denoising or label assignment strategies, or by incorporating detection priors from external object detectors. In this paper, we propose SelfMOTR, a simple yet highly effective detector-free alternative that decouples proposal discovery from association using self-generated internal detection priors. Through extensive analysis and ablation studies, we show that end-to-end transformer trackers with joint detection–association decoding retain substantial hidden detection capacity, and we provide a practical detector-free mechanism for leveraging it. To shed light on these joint decoding dynamics, we draw inspiration from attention sink analyses in large language models, leveraging Track Attention Mass to show that standard generic queries exhibit unbalanced attention, frequently struggling to weigh track context against novel object discovery. SelfMOTR achieves highly competitive performance in complex, dynamic environments, yielding 69.2 HOTA on DanceTrack and leading with 71.1 HOTA on the Bird Flock Tracking (BFT) dataset.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="mt-10">
+        <h2 class="font-display text-2xl font-semibold tracking-tight border-b border-slate-200 pb-2">Results on DanceTrack</h2>
+        <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-soft">
+          <table class="min-w-full border-collapse text-sm">
+            <thead class="bg-slate-50">
+              <tr class="border-b border-slate-300">
+                <th class="px-4 py-3 text-left font-semibold">Model</th>
+                <th class="px-4 py-3 text-center font-semibold">HOTA ↑</th>
+                <th class="px-4 py-3 text-center font-semibold">DetA ↑</th>
+                <th class="px-4 py-3 text-center font-semibold">AssA ↑</th>
+                <th class="px-4 py-3 text-center font-semibold">IDF1 ↑</th>
+                <th class="px-4 py-3 text-center font-semibold">MOTA ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-slate-100 border-b border-slate-200">
+                <td class="px-4 py-2 font-semibold text-slate-600" colspan="6">Non End-to-End</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2">ByteTrack</td>
+                <td class="px-4 py-2 text-center">47.4</td>
+                <td class="px-4 py-2 text-center">71.0</td>
+                <td class="px-4 py-2 text-center">32.1</td>
+                <td class="px-4 py-2 text-center">53.9</td>
+                <td class="px-4 py-2 text-center">89.6</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2">MOTRv2</td>
+                <td class="px-4 py-2 text-center">69.9</td>
+                <td class="px-4 py-2 text-center">83.0</td>
+                <td class="px-4 py-2 text-center">59.0</td>
+                <td class="px-4 py-2 text-center">71.7</td>
+                <td class="px-4 py-2 text-center">91.9</td>
+              </tr>
+
+              <tr class="bg-slate-100 border-b border-slate-200">
+                <td class="px-4 py-2 font-semibold text-slate-600" colspan="6">End-to-End</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2">MOTR</td>
+                <td class="px-4 py-2 text-center">54.2</td>
+                <td class="px-4 py-2 text-center">73.5</td>
+                <td class="px-4 py-2 text-center">40.2</td>
+                <td class="px-4 py-2 text-center">51.5</td>
+                <td class="px-4 py-2 text-center">79.7</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2">CO-MOT</td>
+                <td class="px-4 py-2 text-center"><strong>69.4</strong></td>
+                <td class="px-4 py-2 text-center"><strong>82.1</strong></td>
+                <td class="px-4 py-2 text-center">58.9</td>
+                <td class="px-4 py-2 text-center">71.9</td>
+                <td class="px-4 py-2 text-center"><strong>91.2</strong></td>
+              </tr>
+              <tr class="bg-blue-50/50">
+                <td class="px-4 py-2 font-bold text-blue-900">SelfMOTR (Ours)</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">69.2</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">80.9</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">59.3</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">72.5</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">89.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="font-display text-2xl font-semibold tracking-tight border-b border-slate-200 pb-2 mt-12">Results on BFT and AnimalTrack</h2>
+        <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-soft">
+          <table class="min-w-full border-collapse text-sm">
+            <thead class="bg-slate-50">
+              <tr class="border-b border-slate-300">
+                <th class="px-4 py-3 text-left font-semibold border-r border-slate-200" rowspan="2">Model</th>
+                <th class="px-4 py-2 text-center font-semibold border-b border-r border-slate-200" colspan="3">BFT</th>
+                <th class="px-4 py-2 text-center font-semibold border-b border-slate-200" colspan="3">AnimalTrack</th>
+              </tr>
+              <tr class="border-b border-slate-300">
+                <th class="px-4 py-2 text-center font-semibold">HOTA ↑</th>
+                <th class="px-4 py-2 text-center font-semibold">IDF1 ↑</th>
+                <th class="px-4 py-2 text-center font-semibold border-r border-slate-200">MOTA ↑</th>
+                <th class="px-4 py-2 text-center font-semibold">HOTA ↑</th>
+                <th class="px-4 py-2 text-center font-semibold">IDF1 ↑</th>
+                <th class="px-4 py-2 text-center font-semibold">MOTA ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-slate-100 border-b border-slate-200">
+                <td class="px-4 py-2 font-semibold text-slate-600" colspan="7">Non End-to-End</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">SORT</td>
+                <td class="px-4 py-2 text-center">61.2</td>
+                <td class="px-4 py-2 text-center">77.2</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">75.5</td>
+                <td class="px-4 py-2 text-center">42.8</td>
+                <td class="px-4 py-2 text-center">49.2</td>
+                <td class="px-4 py-2 text-center">55.6</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">ByteTrack</td>
+                <td class="px-4 py-2 text-center">62.5</td>
+                <td class="px-4 py-2 text-center">82.3</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">77.2</td>
+                <td class="px-4 py-2 text-center">51.2</td>
+                <td class="px-4 py-2 text-center">40.1</td>
+                <td class="px-4 py-2 text-center">38.5</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">OC-SORT</td>
+                <td class="px-4 py-2 text-center">66.8</td>
+                <td class="px-4 py-2 text-center">79.3</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">77.1</td>
+                <td class="px-4 py-2 text-center">-</td>
+                <td class="px-4 py-2 text-center">-</td>
+                <td class="px-4 py-2 text-center">-</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">QDTrack</td>
+                <td class="px-4 py-2 text-center">-</td>
+                <td class="px-4 py-2 text-center">-</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">-</td>
+                <td class="px-4 py-2 text-center">56.3</td>
+                <td class="px-4 py-2 text-center">47.0</td>
+                <td class="px-4 py-2 text-center">55.7</td>
+              </tr>
+
+              <tr class="bg-slate-100 border-b border-slate-200">
+                <td class="px-4 py-2 font-semibold text-slate-600" colspan="7">End-to-End</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">TransTrack</td>
+                <td class="px-4 py-2 text-center">62.1</td>
+                <td class="px-4 py-2 text-center">71.4</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">71.4</td>
+                <td class="px-4 py-2 text-center">45.4</td>
+                <td class="px-4 py-2 text-center">53.4</td>
+                <td class="px-4 py-2 text-center">48.3</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">TrackFormer</td>
+                <td class="px-4 py-2 text-center">63.3</td>
+                <td class="px-4 py-2 text-center">72.4</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">74.1</td>
+                <td class="px-4 py-2 text-center">36.5</td>
+                <td class="px-4 py-2 text-center">31.0</td>
+                <td class="px-4 py-2 text-center">20.4</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="px-4 py-2 border-r border-slate-100">SambaMOTR</td>
+                <td class="px-4 py-2 text-center">69.6</td>
+                <td class="px-4 py-2 text-center">81.9</td>
+                <td class="px-4 py-2 text-center border-r border-slate-100">72.0</td>
+                <td class="px-4 py-2 text-center">-</td>
+                <td class="px-4 py-2 text-center">-</td>
+                <td class="px-4 py-2 text-center">-</td>
+              </tr>
+              <tr class="bg-blue-50/50">
+                <td class="px-4 py-2 font-bold text-blue-900 border-r border-blue-100">SelfMOTR (Ours)</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">71.1</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">82.7</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900 border-r border-blue-100">77.6</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">53.7</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">45.5</td>
+                <td class="px-4 py-2 text-center font-bold text-blue-900">49.5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+  <section id="videos" class="mt-10">
+  <h2 class="font-display text-2xl font-semibold tracking-tight border-b border-slate-200 pb-2">
+    Video Demos
+  </h2>
+
+  <div class="mt-6 grid gap-6 grid-cols-1 md:grid-cols-2">
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo3.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo4.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo5.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo6.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo7.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo8.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo9.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+    <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft overflow-hidden">
+      <video class="w-full bg-black" autoplay loop muted playsinline preload="auto">
+        <source src="assets/videos/demo10.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </figure>
+
+  </div>
+</section>
+
+      <section id="citation" class="mt-10">
+        <h2 class="font-display text-2xl font-semibold tracking-tight border-b border-slate-200 pb-2">Citation</h2>
+        <div class="mt-5 rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+          <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-slate-100"><code>@article{gulhan2025selfmotr,
+  title={SelfMOTR: Revisiting MOTR with Self-Generating Detection Priors},
+  author={G{\"u}lhan, Fabian and Mededovic, Emil and Wu, Yuli and Stegmaier, Johannes},
+  journal={arXiv preprint arXiv:2511.20279},
+  year={2025}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
